@@ -155,7 +155,7 @@ shinyServer(function(input, output, session) {
     HTML( inject_info_on_top_of_ui_pages("bertin", "www/info/bertin.html") )  
   })
   
-  output$bertin <- libraryrenderPlot({
+  output$bertin <- renderPlot({
     cex <- 1.1
     x <- get_file()
     if (!is.null(x))
