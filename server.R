@@ -65,10 +65,10 @@ shinyServer(function(input, output, session) {
     if (!is.null(infile)) {
       values$current_grid <- importTxt(infile$datapath)   
       # TODO: the updating currently has a bug so choices may not be NULL: https://github.com/rstudio/shiny/issues/176 
-      choices <- c("Select a grid"="none", 
-                   "Boeker"="boeker", 
-                   "Fransella et al. 2003, p.29"="fbb2003")
-      updateSelectInput(session, inputId="samplegrid", choices=choices) 
+#       choices <- c("Select a grid"="none", 
+#                    "Boeker"="boeker", 
+#                    "Fransella et al. 2003, p.29"="fbb2003")
+      updateSelectInput(session, inputId="samplegrid", choices=NULL) 
     }
   })
   
@@ -264,10 +264,11 @@ shinyServer(function(input, output, session) {
   
   # wird einmal automatisch aufgerufen, bei initialisierung
   observe({
-    input$constructs_clusterboot_update_button
+    i <- input$constructs_clusterboot_update_button
+    #cat("constructs_clusterboot_update_button:", i)
     x <- isolate(get_file())
     s <- NULL
-    if (!is.null(x))
+    if (!is.null(x) & i > 0)
       s <- clusterBoot(x, along=1,
                        align=input$constructs_clusterboot_align,
                        nboot=isolate(input$constructs_clusterboot_nboot),
