@@ -390,7 +390,7 @@ shinyServer(function(input, output, session) {
     output$elements_cluster <- renderPlot({
       x <- get_file()
       if (!is.null(x))
-        cluster(x, 1, 
+        cluster(x, along=2, 
                 dmethod=input$elements_cluster_dmethod,
                 cmethod=input$elements_cluster_cmethod,
                 type = input$elements_cluster_type, 
@@ -470,6 +470,7 @@ shinyServer(function(input, output, session) {
       indexIntensity(x)
   })
   
+
   #### |-- Generate Report ####
   
   # create environment with parameters and pass it to knitr
@@ -597,6 +598,27 @@ shinyServer(function(input, output, session) {
     }
   })
   
+  # DEV reports
+  # idea: create code chunks
+#   report_chunk_biplot <- observe(
+#     isolate(
+#       showvalues <- input$bertin_standard_showvalues
+#       cex.all <- input$bertin_standard_cex_all  
+#       colors <- c(input$bertin_standard_color_left,
+#                   input$bertin_standard_color_right)
+#       ylim <- c(0, input$bertin_standard_ylim)
+#       )
+#       paste("bertin=", "x", ",",
+#             "showvalues=", showvalues, ",",
+#             "colors=", colors, collapse="")
+#   )
+
+# parameters
+
+  
+
+   
+
   
   #### Conditional Panels ####
   
