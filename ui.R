@@ -582,7 +582,7 @@ shinyUI(pageWithSidebar(
       level1.panel.constructs,
       level1.panel.elements,
       level1.panel.indexes,
-      level1.panel.generate.report,
+     # level1.panel.generate.report,
       id="level1")
   )
 ))
